@@ -13,6 +13,11 @@ public class TicTacToe {
     private JButton[] gameButtons;
     private JButton newGameButton;
     private JButton exitButton;
+    private JLabel nextTurnLabel; //Поле, куда выводится следующий ход: X или O
+
+    boolean nextTurnIs_O = false; // флаг, который показывает будет ли следующий ход ноликом
+
+
 
 
     public void build() {
@@ -33,6 +38,7 @@ public class TicTacToe {
 
         newGameButton = new JButton("New game");
         exitButton = new JButton("Exit");
+        nextTurnLabel = new JLabel("Next turn: ");
 
         newGameButton.addActionListener(new NewGameButtonListener());
 
@@ -45,6 +51,7 @@ public class TicTacToe {
 
         buttonPanel.add(newGameButton);
         buttonPanel.add(exitButton);
+        buttonPanel.add(nextTurnLabel);
 
 
         frame.getContentPane().add(BorderLayout.CENTER, gamePanel);
@@ -81,14 +88,27 @@ public class TicTacToe {
 
         @Override
         public void actionPerformed(ActionEvent actionEvent) {
-            button.setText("X");
+            if (button.getText() == "X" || button.getText() == "O"){
+                return;
+            }
+
+
+            if (!nextTurnIs_O) {
+                button.setText("X");
+                nextTurnIs_O = true;
+                nextTurnLabel.setText("Next turn: O");
+            }else {
+                button.setText("O");
+                nextTurnIs_O = false;
+                nextTurnLabel.setText("Next turn: X");
+            }
         }
     }
 }
 
-//TODO: Сделать чередование крестиков и ноликов;
-//TODO: Реализовать запрет повторного нажатия кнопки в игре;
-//TODO: Добавить надпись, чей сейчас ход с помощью JLabel;
+//(+): Сделать чередование крестиков и ноликов;
+//(+): Реализовать запрет повторного нажатия кнопки в игре;
+//(+): Добавить надпись, чей сейчас ход с помощью JLabel;
 //TODO: Увеличить размеры Х/О и поставить разные цвета;
 //TODO: Выделить все обработчики, кроме анонимных в отдельные классы;
 //TODO: Добавить проверку выигрыша. Если есть победитель, то должно выводиться новое JFrame с текстом "X/O WIN!";
