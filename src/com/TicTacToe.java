@@ -165,10 +165,12 @@ public class TicTacToe {
 
         }
         private void winMessageX(){
-            System.out.println("X WIN!");
+//            System.out.println("X WIN!");
+            JOptionPane.showMessageDialog(null, "X WIN!", "WIN!", JOptionPane.INFORMATION_MESSAGE);
         }
         private void winMessageO(){
-            System.out.println("O WIN!");
+//            System.out.println("O WIN!");
+            JOptionPane.showMessageDialog(null, "O WIN!", "WIN!", JOptionPane.INFORMATION_MESSAGE);
         }
     }
 }
