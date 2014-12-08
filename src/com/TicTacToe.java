@@ -38,7 +38,7 @@ public class TicTacToe {
 
         newGameButton = new JButton("New game");
         exitButton = new JButton("Exit");
-        nextTurnLabel = new JLabel("Next turn: ");
+        nextTurnLabel = new JLabel("Next turn: X");
 
         newGameButton.addActionListener(new NewGameButtonListener());
 
@@ -58,7 +58,13 @@ public class TicTacToe {
         frame.getContentPane().add(BorderLayout.SOUTH, buttonPanel);
 
         frame.setVisible(true);
-
+////Получаем номера кнопок
+//        for (int i = 0; i < 9; i++) {
+//            String mark = " " + i;
+//            gameButtons[i].setText(mark);
+//
+//        }
+////
     }
 
 
@@ -102,6 +108,67 @@ public class TicTacToe {
                 nextTurnIs_O = false;
                 nextTurnLabel.setText("Next turn: X");
             }
+            winCheck();
+        }
+
+        private void winCheck() {
+
+            if (gameButtons[0].getText() == "X" && gameButtons[3].getText() == "X" && gameButtons[6].getText() == "X"){
+                winMessageX();
+            }
+            if (gameButtons[1].getText() == "X" && gameButtons[4].getText() == "X" && gameButtons[7].getText() == "X"){
+                winMessageX();
+            }
+            if (gameButtons[2].getText() == "X" && gameButtons[5].getText() == "X" && gameButtons[8].getText() == "X"){
+                winMessageX();
+            }
+            if (gameButtons[0].getText() == "X" && gameButtons[1].getText() == "X" && gameButtons[2].getText() == "X"){
+                winMessageX();
+            }
+            if (gameButtons[3].getText() == "X" && gameButtons[4].getText() == "X" && gameButtons[5].getText() == "X"){
+                winMessageX();
+            }
+            if (gameButtons[6].getText() == "X" && gameButtons[7].getText() == "X" && gameButtons[8].getText() == "X"){
+                winMessageX();
+            }
+            if (gameButtons[0].getText() == "X" && gameButtons[4].getText() == "X" && gameButtons[8].getText() == "X"){
+                winMessageX();
+            }
+            if (gameButtons[2].getText() == "X" && gameButtons[4].getText() == "X" && gameButtons[6].getText() == "X"){
+                winMessageX();
+            }
+            if (gameButtons[0].getText() == "O" && gameButtons[3].getText() == "O" && gameButtons[6].getText() == "O"){
+                winMessageO();
+            }
+            if (gameButtons[1].getText() == "O" && gameButtons[4].getText() == "O" && gameButtons[7].getText() == "O"){
+                winMessageO();
+            }
+            if (gameButtons[2].getText() == "O" && gameButtons[5].getText() == "O" && gameButtons[8].getText() == "O"){
+                winMessageO();
+            }
+            if (gameButtons[0].getText() == "O" && gameButtons[1].getText() == "O" && gameButtons[2].getText() == "O"){
+                winMessageO();
+            }
+            if (gameButtons[3].getText() == "O" && gameButtons[4].getText() == "O" && gameButtons[5].getText() == "O"){
+                winMessageO();
+            }
+            if (gameButtons[6].getText() == "O" && gameButtons[7].getText() == "O" && gameButtons[8].getText() == "O"){
+                winMessageO();
+            }
+            if (gameButtons[0].getText() == "O" && gameButtons[4].getText() == "O" && gameButtons[8].getText() == "O"){
+                winMessageO();
+            }
+            if (gameButtons[2].getText() == "O" && gameButtons[4].getText() == "O" && gameButtons[6].getText() == "O"){
+                winMessageO();
+            }
+
+
+        }
+        private void winMessageX(){
+            System.out.println("X WIN!");
+        }
+        private void winMessageO(){
+            System.out.println("O WIN!");
         }
     }
 }
