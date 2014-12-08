@@ -165,12 +165,21 @@ public class TicTacToe {
 
         }
         private void winMessageX(){
-//            System.out.println("X WIN!");
-            JOptionPane.showMessageDialog(null, "X WIN!", "WIN!", JOptionPane.INFORMATION_MESSAGE);
+
+            JFrame winFrameX = new JFrame("WIN!");
+            winFrameX.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            winFrameX.setBounds(220, 220, 280, 280);
+            JLabel winMessageX = new JLabel("X WIN!", SwingConstants.CENTER);
+            winFrameX.add(winMessageX);
+            winFrameX.setVisible(true);
         }
         private void winMessageO(){
-//            System.out.println("O WIN!");
-            JOptionPane.showMessageDialog(null, "O WIN!", "WIN!", JOptionPane.INFORMATION_MESSAGE);
+            JFrame winFrameO = new JFrame("WIN!");
+            winFrameO.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            winFrameO.setBounds(220, 220, 280, 280);
+            JLabel winMessageO = new JLabel("O WIN!", SwingConstants.CENTER);
+            winFrameO.add(winMessageO);
+            winFrameO.setVisible(true);
         }
     }
 }
@@ -180,4 +189,4 @@ public class TicTacToe {
 //(+): Добавить надпись, чей сейчас ход с помощью JLabel;
 //TODO: Увеличить размеры Х/О и поставить разные цвета;
 //TODO: Выделить все обработчики, кроме анонимных в отдельные классы;
-//TODO: Добавить проверку выигрыша. Если есть победитель, то должно выводиться новое JFrame с текстом "X/O WIN!";
+//(+): Добавить проверку выигрыша. Если есть победитель, то должно выводиться новое JFrame с текстом "X/O WIN!";
