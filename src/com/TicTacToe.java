@@ -101,10 +101,16 @@ public class TicTacToe {
 
             if (!nextTurnIs_O) {
                 button.setText("X");
+                Font newFont = new Font("Arial", Font.BOLD, 36);
+                button.setFont(newFont);
+//                button.setBackground(Color.green);
                 nextTurnIs_O = true;
                 nextTurnLabel.setText("Next turn: O");
             }else {
                 button.setText("O");
+                Font newFont = new Font("Arial", Font.BOLD, 36);
+                button.setFont(newFont);
+//                button.setBackground(Color.blue);
                 nextTurnIs_O = false;
                 nextTurnLabel.setText("Next turn: X");
             }
