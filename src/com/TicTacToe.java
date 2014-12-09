@@ -80,6 +80,7 @@ public class TicTacToe {
         public void actionPerformed(ActionEvent e) {
             for (JButton button:gameButtons){
                 button.setText("");
+//                button.setBackground(Color.white);
             }
         }
     }
@@ -104,6 +105,7 @@ public class TicTacToe {
                 Font newFont = new Font("Arial", Font.BOLD, 36);
                 button.setFont(newFont);
 //                button.setBackground(Color.green);
+                button.setForeground(Color.green);
                 nextTurnIs_O = true;
                 nextTurnLabel.setText("Next turn: O");
             }else {
@@ -111,6 +113,7 @@ public class TicTacToe {
                 Font newFont = new Font("Arial", Font.BOLD, 36);
                 button.setFont(newFont);
 //                button.setBackground(Color.blue);
+                button.setForeground(Color.blue);
                 nextTurnIs_O = false;
                 nextTurnLabel.setText("Next turn: X");
             }
@@ -193,6 +196,6 @@ public class TicTacToe {
 //(+): Сделать чередование крестиков и ноликов;
 //(+): Реализовать запрет повторного нажатия кнопки в игре;
 //(+): Добавить надпись, чей сейчас ход с помощью JLabel;
-//TODO: Увеличить размеры Х/О и поставить разные цвета;
+//(+): Увеличить размеры Х/О и поставить разные цвета;
 //TODO: Выделить все обработчики, кроме анонимных в отдельные классы;
 //(+): Добавить проверку выигрыша. Если есть победитель, то должно выводиться новое JFrame с текстом "X/O WIN!";
