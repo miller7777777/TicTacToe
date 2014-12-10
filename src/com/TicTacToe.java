@@ -98,7 +98,7 @@ public class TicTacToe {
                 return;
             }
 
-
+//Проверяем, чей текущий ход. Вызываем метод, рисующий X или O;
             if (!nextTurnIs_O) {
                 set_X_O("X",Color.green);
                 nextTurnIs_O = true;
@@ -108,15 +108,16 @@ public class TicTacToe {
                 nextTurnIs_O = false;
                 nextTurnLabel.setText("Next turn: X");
             }
+//Вызываем метод, делающий проверку на выигрыш;
             winCheck();
         }
 
         private void winCheck() {
-
+//Введение цикла позволило сократить тупой проверочный код в 2 раза;
             String[] t = new String[2];
             t[0] = "X";
             t[1] = "O";
-
+//Здесь проверяются все выигрышные комбинации.
             for (int i = 0; i < 2; i++) {
 
                 if (gameButtons[0].getText() == t[i] && gameButtons[3].getText() == t[i] && gameButtons[6].getText() == t[i]){
@@ -149,6 +150,8 @@ public class TicTacToe {
 
 
         }
+
+//Метод, выводящий окно с сообщением о выигрыше;
         private void winMessage(String value){
 
             JFrame winFrame = new JFrame("WIN!");
@@ -162,6 +165,7 @@ public class TicTacToe {
             winFrame.setVisible(true);
         }
 
+//Метод рисует X или O;
         private void set_X_O(String value, Color color){
             button.setText(value);
             Font newFont = new Font("Arial", Font.BOLD, 36);
