@@ -18,8 +18,6 @@ public class TicTacToe {
     boolean nextTurnIs_O = false; // флаг, который показывает будет ли следующий ход ноликом
 
 
-
-
     public void build() {
         JFrame frame = new JFrame("TicTacToe");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -68,7 +66,6 @@ public class TicTacToe {
     }
 
 
-
     public static void main(String[] args) {
 
         new TicTacToe().build();
@@ -78,7 +75,7 @@ public class TicTacToe {
     private class NewGameButtonListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            for (JButton button:gameButtons){
+            for (JButton button : gameButtons) {
                 button.setText("");
             }
         }
@@ -94,16 +91,16 @@ public class TicTacToe {
 
         @Override
         public void actionPerformed(ActionEvent actionEvent) {
-            if (button.getText() == "X" || button.getText() == "O"){
+            if (button.getText() == "X" || button.getText() == "O") {
                 return;
             }
 
 //Проверяем, чей текущий ход. Вызываем метод, рисующий X или O;
             if (!nextTurnIs_O) {
-                set_X_O("X",Color.green);
+                set_X_O("X", Color.green);
                 nextTurnIs_O = true;
                 nextTurnLabel.setText("Next turn: O");
-            }else {
+            } else {
                 set_X_O("O", Color.blue);
                 nextTurnIs_O = false;
                 nextTurnLabel.setText("Next turn: X");
@@ -120,39 +117,35 @@ public class TicTacToe {
 //Здесь проверяются все выигрышные комбинации.
             for (int i = 0; i < 2; i++) {
 
-                if (gameButtons[0].getText() == t[i] && gameButtons[3].getText() == t[i] && gameButtons[6].getText() == t[i]){
+                if (gameButtons[0].getText() == t[i] && gameButtons[3].getText() == t[i] && gameButtons[6].getText() == t[i]) {
                     winMessage(t[i]);
                 }
-                if (gameButtons[1].getText() == t[i] && gameButtons[4].getText() == t[i] && gameButtons[7].getText() == t[i]){
+                if (gameButtons[1].getText() == t[i] && gameButtons[4].getText() == t[i] && gameButtons[7].getText() == t[i]) {
                     winMessage(t[i]);
                 }
-                if (gameButtons[2].getText() == t[i] && gameButtons[5].getText() == t[i] && gameButtons[8].getText() == t[i]){
+                if (gameButtons[2].getText() == t[i] && gameButtons[5].getText() == t[i] && gameButtons[8].getText() == t[i]) {
                     winMessage(t[i]);
                 }
-                if (gameButtons[0].getText() == t[i] && gameButtons[1].getText() == t[i] && gameButtons[2].getText() == t[i]){
+                if (gameButtons[0].getText() == t[i] && gameButtons[1].getText() == t[i] && gameButtons[2].getText() == t[i]) {
                     winMessage(t[i]);
                 }
-                if (gameButtons[3].getText() == t[i] && gameButtons[4].getText() == t[i] && gameButtons[5].getText() == t[i]){
+                if (gameButtons[3].getText() == t[i] && gameButtons[4].getText() == t[i] && gameButtons[5].getText() == t[i]) {
                     winMessage(t[i]);
                 }
-                if (gameButtons[6].getText() == t[i] && gameButtons[7].getText() == t[i] && gameButtons[8].getText() == t[i]){
+                if (gameButtons[6].getText() == t[i] && gameButtons[7].getText() == t[i] && gameButtons[8].getText() == t[i]) {
                     winMessage(t[i]);
                 }
-                if (gameButtons[0].getText() == t[i] && gameButtons[4].getText() == t[i] && gameButtons[8].getText() == t[i]){
+                if (gameButtons[0].getText() == t[i] && gameButtons[4].getText() == t[i] && gameButtons[8].getText() == t[i]) {
                     winMessage(t[i]);
                 }
-                if (gameButtons[2].getText() == t[i] && gameButtons[4].getText() == t[i] && gameButtons[6].getText() == t[i]){
+                if (gameButtons[2].getText() == t[i] && gameButtons[4].getText() == t[i] && gameButtons[6].getText() == t[i]) {
                     winMessage(t[i]);
                 }
             }
-
-
-
-
         }
 
-//Метод, выводящий окно с сообщением о выигрыше;
-        private void winMessage(String value){
+        //Метод, выводящий окно с сообщением о выигрыше;
+        private void winMessage(String value) {
 
             JFrame winFrame = new JFrame("WIN!");
             winFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -165,8 +158,8 @@ public class TicTacToe {
             winFrame.setVisible(true);
         }
 
-//Метод рисует X или O;
-        private void set_X_O(String value, Color color){
+        //Метод рисует X или O;
+        private void set_X_O(String value, Color color) {
             button.setText(value);
             Font newFont = new Font("Arial", Font.BOLD, 36);
             button.setFont(newFont);
