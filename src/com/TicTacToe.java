@@ -80,7 +80,6 @@ public class TicTacToe {
         public void actionPerformed(ActionEvent e) {
             for (JButton button:gameButtons){
                 button.setText("");
-//                button.setBackground(Color.white);
             }
         }
     }
@@ -101,19 +100,11 @@ public class TicTacToe {
 
 
             if (!nextTurnIs_O) {
-                button.setText("X");
-                Font newFont = new Font("Arial", Font.BOLD, 36);
-                button.setFont(newFont);
-//                button.setBackground(Color.green);
-                button.setForeground(Color.green);
+                set_X_O("X",Color.green);
                 nextTurnIs_O = true;
                 nextTurnLabel.setText("Next turn: O");
             }else {
-                button.setText("O");
-                Font newFont = new Font("Arial", Font.BOLD, 36);
-                button.setFont(newFont);
-//                button.setBackground(Color.blue);
-                button.setForeground(Color.blue);
+                set_X_O("O", Color.blue);
                 nextTurnIs_O = false;
                 nextTurnLabel.setText("Next turn: X");
             }
@@ -122,73 +113,60 @@ public class TicTacToe {
 
         private void winCheck() {
 
-            if (gameButtons[0].getText() == "X" && gameButtons[3].getText() == "X" && gameButtons[6].getText() == "X"){
-                winMessageX();
+            String[] t = new String[2];
+            t[0] = "X";
+            t[1] = "O";
+
+            for (int i = 0; i < 2; i++) {
+
+                if (gameButtons[0].getText() == t[i] && gameButtons[3].getText() == t[i] && gameButtons[6].getText() == t[i]){
+                    winMessage(t[i]);
+                }
+                if (gameButtons[1].getText() == t[i] && gameButtons[4].getText() == t[i] && gameButtons[7].getText() == t[i]){
+                    winMessage(t[i]);
+                }
+                if (gameButtons[2].getText() == t[i] && gameButtons[5].getText() == t[i] && gameButtons[8].getText() == t[i]){
+                    winMessage(t[i]);
+                }
+                if (gameButtons[0].getText() == t[i] && gameButtons[1].getText() == t[i] && gameButtons[2].getText() == t[i]){
+                    winMessage(t[i]);
+                }
+                if (gameButtons[3].getText() == t[i] && gameButtons[4].getText() == t[i] && gameButtons[5].getText() == t[i]){
+                    winMessage(t[i]);
+                }
+                if (gameButtons[6].getText() == t[i] && gameButtons[7].getText() == t[i] && gameButtons[8].getText() == t[i]){
+                    winMessage(t[i]);
+                }
+                if (gameButtons[0].getText() == t[i] && gameButtons[4].getText() == t[i] && gameButtons[8].getText() == t[i]){
+                    winMessage(t[i]);
+                }
+                if (gameButtons[2].getText() == t[i] && gameButtons[4].getText() == t[i] && gameButtons[6].getText() == t[i]){
+                    winMessage(t[i]);
+                }
             }
-            if (gameButtons[1].getText() == "X" && gameButtons[4].getText() == "X" && gameButtons[7].getText() == "X"){
-                winMessageX();
-            }
-            if (gameButtons[2].getText() == "X" && gameButtons[5].getText() == "X" && gameButtons[8].getText() == "X"){
-                winMessageX();
-            }
-            if (gameButtons[0].getText() == "X" && gameButtons[1].getText() == "X" && gameButtons[2].getText() == "X"){
-                winMessageX();
-            }
-            if (gameButtons[3].getText() == "X" && gameButtons[4].getText() == "X" && gameButtons[5].getText() == "X"){
-                winMessageX();
-            }
-            if (gameButtons[6].getText() == "X" && gameButtons[7].getText() == "X" && gameButtons[8].getText() == "X"){
-                winMessageX();
-            }
-            if (gameButtons[0].getText() == "X" && gameButtons[4].getText() == "X" && gameButtons[8].getText() == "X"){
-                winMessageX();
-            }
-            if (gameButtons[2].getText() == "X" && gameButtons[4].getText() == "X" && gameButtons[6].getText() == "X"){
-                winMessageX();
-            }
-            if (gameButtons[0].getText() == "O" && gameButtons[3].getText() == "O" && gameButtons[6].getText() == "O"){
-                winMessageO();
-            }
-            if (gameButtons[1].getText() == "O" && gameButtons[4].getText() == "O" && gameButtons[7].getText() == "O"){
-                winMessageO();
-            }
-            if (gameButtons[2].getText() == "O" && gameButtons[5].getText() == "O" && gameButtons[8].getText() == "O"){
-                winMessageO();
-            }
-            if (gameButtons[0].getText() == "O" && gameButtons[1].getText() == "O" && gameButtons[2].getText() == "O"){
-                winMessageO();
-            }
-            if (gameButtons[3].getText() == "O" && gameButtons[4].getText() == "O" && gameButtons[5].getText() == "O"){
-                winMessageO();
-            }
-            if (gameButtons[6].getText() == "O" && gameButtons[7].getText() == "O" && gameButtons[8].getText() == "O"){
-                winMessageO();
-            }
-            if (gameButtons[0].getText() == "O" && gameButtons[4].getText() == "O" && gameButtons[8].getText() == "O"){
-                winMessageO();
-            }
-            if (gameButtons[2].getText() == "O" && gameButtons[4].getText() == "O" && gameButtons[6].getText() == "O"){
-                winMessageO();
-            }
+
+
 
 
         }
-        private void winMessageX(){
+        private void winMessage(String value){
 
-            JFrame winFrameX = new JFrame("WIN!");
-            winFrameX.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-            winFrameX.setBounds(220, 220, 280, 280);
-            JLabel winMessageX = new JLabel("X WIN!", SwingConstants.CENTER);
-            winFrameX.add(winMessageX);
-            winFrameX.setVisible(true);
+            JFrame winFrame = new JFrame("WIN!");
+            winFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            winFrame.setBounds(220, 220, 280, 280);
+            JLabel winMessage = new JLabel(value + " WIN!", SwingConstants.CENTER);
+            Font newFont = new Font("Arial", Font.BOLD, 36);
+            winMessage.setFont(newFont);
+            winMessage.setForeground(Color.blue);
+            winFrame.add(winMessage);
+            winFrame.setVisible(true);
         }
-        private void winMessageO(){
-            JFrame winFrameO = new JFrame("WIN!");
-            winFrameO.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-            winFrameO.setBounds(220, 220, 280, 280);
-            JLabel winMessageO = new JLabel("O WIN!", SwingConstants.CENTER);
-            winFrameO.add(winMessageO);
-            winFrameO.setVisible(true);
+
+        private void set_X_O(String value, Color color){
+            button.setText(value);
+            Font newFont = new Font("Arial", Font.BOLD, 36);
+            button.setFont(newFont);
+            button.setForeground(color);
         }
     }
 }
